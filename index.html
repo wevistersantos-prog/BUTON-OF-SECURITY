@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senhas Pro</title>
+    <style>
+        /* Cores modernas e Dark Mode */
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --success: #10b981;
+            --success-hover: #059669;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #cbd5e1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 { text-align: center; margin-bottom: 20px; font-weight: 600; }
+
+        /* Visor da Senha */
+        .password-display {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            font-size: 20px;
+            letter-spacing: 2px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            word-break: break-all;
+            color: var(--success);
+            font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Configurações */
+        .settings { margin-bottom: 20px; }
+
+        .setting {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+        }
+
+        .setting input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            border-radius: 4px;
+            border: none;
+            background: #cbd5e1;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .setting input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* Botões */
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            transition: 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .btn-generate { background-color: var(--primary); }
+        .btn-generate:hover { background-color: var(--primary-hover); }
+
+        .btn-copy { background-color: var(--success); margin-bottom: 0; }
+        .btn-copy:hover { background-color: var(--success-hover); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Gerador Pro</h2>
+        
+        <div class="password-display" id="password">Sua senha aqui</div>
+
+        <div class="settings">
+            <div class="setting">
+                <label>Tamanho da Senha</label>
+                <input type="number" id="length" value="16" min="4" max="50">
+            </div>
+            <div class="setting">
+                <label>Incluir Letras Maiúsculas</label>
+                <input type="checkbox" id="uppercase" checked>
+            </div>
+            <div class="setting">
+                <label>Incluir Letras Minúsculas</label>
+                <input type="checkbox" id="lowercase" checked>
+            </div>
+            <div class="setting">
+                <label>Incluir Números</label>
+                <input type="checkbox" id="numbers" checked>
+            </div>
+            <div class="setting">
+                <label>Incluir Símbolos</label>
+                <input type="checkbox" id="symbols" checked>
+            </div>
+        </div>
+
+        <button class="btn-generate" onclick="generatePassword()">Gerar Senha</button>
+        <button class="btn-copy" onclick="copyPassword()">Copiar Senha</button>
+    </div>
+
+    <script>
+        // Funções para sortear caracteres aleatórios
+        const randomFunc = {
+            lower: () => String.fromCharCode(Math.floor
+        
